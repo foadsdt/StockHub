@@ -33,9 +33,11 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: 'is_granted("PUBLIC_ACCESS")'
         ),
         new Put(
-            security: 'is_granted("ROLE_USER_EDIT")'
+            security: 'is_granted("ROLE_ADMIN")'
         ),
-        new Patch(),
+        new Patch(
+            security: 'is_granted("ROLE_ADMIN")'
+        ),
         new Delete()
     ],
     normalizationContext: ['groups' => 'user:read'],
@@ -76,20 +78,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank]
     private ?string $username = null;
 
-    /**
-     * @var Collection<int, ApiToken>
-     */
-    #[ORM\OneToMany(mappedBy: 'ownedBy', targetEntity: ApiToken::class)]
-    private Collection $apiTokens;
-
-    /** Scopes Given During Api Authentication */
-    private ?array $accessTokenScopes = null;
-
-    public function __construct()
-    {
-        $this->apiTokens = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -124,17 +112,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-
-        if (null === $this->accessTokenScopes) {
-            // logged in as a full , normal user
-            $roles = $this->roles;
-            $roles[] = 'ROLE_FULL_USER';
-        } else {
-            $roles = $this->accessTokenScopes;
-        }
-
-//        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+        $roles = $this->roles;
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
@@ -186,50 +164,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, ApiToken>
-     */
-    #[Groups('user:read')]
-    public function getApiTokens(): Collection
-    {
-        return $this->apiTokens;
-    }
-
-    public function addApiToken(ApiToken $apiToken): static
-    {
-        if (!$this->apiTokens->contains($apiToken)) {
-            $this->apiTokens->add($apiToken);
-            $apiToken->setOwnedBy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeApiToken(ApiToken $apiToken): static
-    {
-        if ($this->apiTokens->removeElement($apiToken)) {
-            // set the owning side to null (unless already changed)
-            if ($apiToken->getOwnedBy() === $this) {
-                $apiToken->setOwnedBy(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getValidTokenStrings(): array
-    {
-        return $this->getApiTokens()
-            ->filter(fn(ApiToken $token) => $token->isValid())
-            ->map(fn(ApiToken $token) => $token->getToken())
-            ->toArray();
-    }
-
-    public function markAsTokenAuthenticated(array $scopes): void
-    {
-        $this->accessTokenScopes = $scopes;
-    }
 }

@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\ApiToken;
+use App\Entity\Orders;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<ApiToken>
+ * @extends ServiceEntityRepository<Orders>
  */
-class ApiTokenRepository extends ServiceEntityRepository
+class OrdersRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ApiToken::class);
+        parent::__construct($registry, Orders::class);
     }
 
     //    /**
-    //     * @return ApiToken[] Returns an array of ApiToken objects
+    //     * @return Order[] Returns an array of Order objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('a.id', 'ASC')
+    //            ->orderBy('o.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?ApiToken
+    //    public function findOneBySomeField($value): ?Order
     //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

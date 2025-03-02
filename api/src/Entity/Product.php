@@ -29,7 +29,7 @@ use function Symfony\Component\String\u;
     operations: [
         new Get(
             normalizationContext: [
-                'groups' => ['product:read', 'product:item:get']
+                'groups' => ['product:read']
             ]
         ),
         new GetCollection(),
