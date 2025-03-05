@@ -22,12 +22,12 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: 'is_granted("ROLE_ORDER_VIEW")',
         ),
         new GetCollection(),
-        new Post(security: 'is_granted("ROLE_ORDER_MANAGE")'),
+        new Post(),
         new Put(
-            security: 'is_granted("ROLE_ORDER_MANAGE")'
+            security: 'is_granted("ROLE_ADMIN")'
         ),
         new Patch(
-            security: 'is_granted("ROLE_ORDER_MANAGE")'
+            security: 'is_granted("ROLE_ADMIN")'
         ),
         new Delete(
             security: 'is_granted("ROLE_ADMIN")'

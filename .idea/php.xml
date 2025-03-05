@@ -43,7 +43,6 @@
       <path value="$PROJECT_DIR$/api/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/api/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/api/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/api/vendor/cebe/php-openapi" />
       <path value="$PROJECT_DIR$/api/vendor/zozlak/rdf-constants" />
       <path value="$PROJECT_DIR$/api/vendor/clue/ndjson-react" />
       <path value="$PROJECT_DIR$/api/vendor/nelmio/cors-bundle" />
@@ -166,6 +165,11 @@
       <path value="$PROJECT_DIR$/api/vendor/bin/.phpunit" />
       <path value="$PROJECT_DIR$/api/vendor/lcobucci/clock" />
       <path value="$PROJECT_DIR$/api/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/api/vendor/icecave/repr" />
+      <path value="$PROJECT_DIR$/api/vendor/icecave/parity" />
+      <path value="$PROJECT_DIR$/api/vendor/marc-mabe/php-enum" />
+      <path value="$PROJECT_DIR$/api/vendor/devizzent/cebe-php-openapi" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.4" />

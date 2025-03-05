@@ -21,6 +21,8 @@ class LoginController extends AbstractController
     #[Route('/login-request', name: 'app_login_request', methods: ['POST'])]
     public function userLoginRequest(IriConverterInterface $iriConverter, #[CurrentUser] ?User $user): Response
     {
+
+        dd($user);
         if (!$user) {
             return $this->json([
                 'error' => 'check content type'

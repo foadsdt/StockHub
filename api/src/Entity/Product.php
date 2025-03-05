@@ -34,11 +34,8 @@ use function Symfony\Component\String\u;
         ),
         new GetCollection(),
         new Post(security: 'is_granted("ROLE_PRODUCT_CREATE")'),
-        new Put(
-            security: 'is_granted("ROLE_PRODUCT_EDIT")'
-        ),
         new Patch(
-            security: 'is_granted("ROLE_PRODUCT_EDIT")'
+            security: 'is_granted("EDIT",object)'
         ),
         new Delete(
             security: 'is_granted("ROLE_ADMIN")'
@@ -99,7 +96,7 @@ class Product
     #[Assert\Valid]
     private ?User $supplier = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(['product:read', 'product:write'])]
     #[Assert\NotNull]

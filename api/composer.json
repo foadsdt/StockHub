@@ -2,7 +2,7 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": "8.4.4",
+        "php": "^8.4.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/doctrine-orm": "^4.0.3",
@@ -40,6 +40,7 @@
     "require-dev": {
         "api-platform/schema-generator": "^5.0",
         "doctrine/doctrine-fixtures-bundle": "^3.6",
+        "mtdowling/jmespath.php": "^2.8",
         "symfony/debug-bundle": "6.4.*",
         "symfony/maker-bundle": "^1.44",
         "symfony/stopwatch": "6.4.*",

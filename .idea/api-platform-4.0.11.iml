@@ -27,7 +27,6 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/twig/twig" />
-      <excludeFolder url="file://$MODULE_DIR$/api/vendor/cebe/php-openapi" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/zozlak/rdf-constants" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/clue/ndjson-react" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/nelmio/cors-bundle" />
@@ -150,6 +149,11 @@
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/bin/.phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/lcobucci/clock" />
       <excludeFolder url="file://$MODULE_DIR$/api/vendor/lexik/jwt-authentication-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/mtdowling/jmespath.php" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/devizzent/cebe-php-openapi" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/icecave/parity" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/icecave/repr" />
+      <excludeFolder url="file://$MODULE_DIR$/api/vendor/marc-mabe/php-enum" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
