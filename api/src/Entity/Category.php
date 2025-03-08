@@ -28,28 +28,34 @@ class Category
     #[Assert\NotBlank]
     private ?string $name = null;
 
-    #[ORM\OneToOne(mappedBy: 'category', targetEntity: Product::class)]
-    private ArrayCollection $products;
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class)]
+    private $products;
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProducts()
+    public function getProducts(): ArrayCollection
     {
         return $this->products;
     }
 
-    /**
-     * @param mixed $products
-     */
-    public function setProducts($products): void
+    public function addProduct(Product $product): self
     {
-        $this->products = $products;
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setCategory($this); // Ensure bidirectional association is maintained
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        $this->products->removeElement($product);
+
+        return $this;
     }
 
 
@@ -67,4 +73,7 @@ class Category
     {
         $this->name = $name;
     }
+
+
+
 }
